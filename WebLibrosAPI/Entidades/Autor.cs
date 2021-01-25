@@ -17,5 +17,7 @@ namespace WebLibrosAPI.Entidades
         [Required]
         public string Nombre { get; set; }
         public List<Libro> Libros { get; set; }//Recuperamos todos los libros
+
+        //Servicio para evitar la Referencia Circular
     }
 }

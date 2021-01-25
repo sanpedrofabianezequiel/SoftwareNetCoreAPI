@@ -56,8 +56,6 @@ C:\Users\sanpe\source\repos\WebLibrosAPI\WebLibrosAPI\bin\Debug\netcoreapp3.1\We
 C:\Users\sanpe\source\repos\WebLibrosAPI\WebLibrosAPI\bin\Debug\netcoreapp3.1\WebLibrosAPI.pdb
 C:\Users\sanpe\source\repos\WebLibrosAPI\WebLibrosAPI\bin\Debug\netcoreapp3.1\Humanizer.dll
 C:\Users\sanpe\source\repos\WebLibrosAPI\WebLibrosAPI\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
-C:\Users\sanpe\source\repos\WebLibrosAPI\WebLibrosAPI\obj\Debug\netcoreapp3.1\WebLibrosAPI.csproj.CoreCompileInputs.cache
-C:\Users\sanpe\source\repos\WebLibrosAPI\WebLibrosAPI\obj\Debug\netcoreapp3.1\WebLibrosAPI.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\sanpe\source\repos\WebLibrosAPI\WebLibrosAPI\obj\Debug\netcoreapp3.1\WebLibrosAPI.dll
 C:\Users\sanpe\source\repos\WebLibrosAPI\WebLibrosAPI\obj\Debug\netcoreapp3.1\WebLibrosAPI.pdb
 C:\Users\sanpe\source\repos\WebLibrosAPI\WebLibrosAPI\obj\Debug\netcoreapp3.1\WebLibrosAPI.genruntimeconfig.cache

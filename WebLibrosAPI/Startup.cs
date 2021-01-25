@@ -28,11 +28,14 @@ namespace WebLibrosAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddControllers() .AddNewtonsoftJson(x=> { x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore; });
 
             //Inyectamos los servicios que vamos a UTILIZAR
             //SQL EJ:
             services.AddDbContext<ApplicationDbContext>(opciones => 
                 opciones.UseSqlServer(Configuration.GetConnectionString("DefaultConnectionString")));
+         
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
