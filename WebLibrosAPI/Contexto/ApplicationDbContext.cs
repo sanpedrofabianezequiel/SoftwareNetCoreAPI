@@ -21,7 +21,9 @@ namespace WebLibrosAPI.Contexto
         //Comandos=> Add-Migration "Nombre de esa migracion" para identifarlo
         //Add-Migration Name
         //Update-Database
+        //Cada vez que agregamos una Tabla, ponemos Add-Migration "Nombre" =>Mapping
+        //Para persistir los cambios en la DATABASE usamos Update-Databse
         public DbSet<Autor> Autores { get; set; }
-
+        public DbSet<Libro> Libros { get; set; }
     }
 }

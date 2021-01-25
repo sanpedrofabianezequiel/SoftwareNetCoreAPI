@@ -44,6 +44,9 @@ namespace WebLibrosAPI.Controllers
             context.SaveChanges();
             return new CreatedAtRouteResult("ObtenerAutor", new { id= autor.Id},autor);
         }
+
+        //En el Put Necesitamos enviar el ID por parametro
+        //y en el FromBody el Objeto completo, repitiendo el ID incluso
         [HttpPut("{id}")]
         public ActionResult Put(int id,[FromBody] Autor value)
         {

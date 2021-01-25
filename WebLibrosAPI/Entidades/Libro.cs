@@ -1,21 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace WebLibrosAPI.Entidades
 {
-
-    public class Autor
+    public class Libro
     {
-        [Key]
-        [Required]
         public int Id { get; set; }
-        [StringLength(100)]
         [Required]
-        public string Nombre { get; set; }
-        public List<Libro> Libros { get; set; }//Recuperamos todos los libros
+        public string Titulo { get; set; }
+
+        //Vinculacion con la clase Autor ForeKey 
+        public int AutorId { get; set; }
+        public Autor Autor { get; set; }//Propiedad de navegacion
     }
 }
