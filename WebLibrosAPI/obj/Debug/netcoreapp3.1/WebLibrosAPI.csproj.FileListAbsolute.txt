@@ -59,3 +59,11 @@ C:\Users\sanpe\source\repos\WebLibrosAPI\WebLibrosAPI\bin\Debug\netcoreapp3.1\Mi
 C:\Users\sanpe\source\repos\WebLibrosAPI\WebLibrosAPI\obj\Debug\netcoreapp3.1\WebLibrosAPI.dll
 C:\Users\sanpe\source\repos\WebLibrosAPI\WebLibrosAPI\obj\Debug\netcoreapp3.1\WebLibrosAPI.pdb
 C:\Users\sanpe\source\repos\WebLibrosAPI\WebLibrosAPI\obj\Debug\netcoreapp3.1\WebLibrosAPI.genruntimeconfig.cache
+C:\Users\sanpe\source\repos\WebLibrosAPI\WebLibrosAPI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\sanpe\source\repos\WebLibrosAPI\WebLibrosAPI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\sanpe\source\repos\WebLibrosAPI\WebLibrosAPI\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+C:\Users\sanpe\source\repos\WebLibrosAPI\WebLibrosAPI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\sanpe\source\repos\WebLibrosAPI\WebLibrosAPI\bin\Debug\netcoreapp3.1\AutoMapper.dll
+C:\Users\sanpe\source\repos\WebLibrosAPI\WebLibrosAPI\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\sanpe\source\repos\WebLibrosAPI\WebLibrosAPI\obj\Debug\netcoreapp3.1\WebLibrosAPI.csproj.CoreCompileInputs.cache
+C:\Users\sanpe\source\repos\WebLibrosAPI\WebLibrosAPI\obj\Debug\netcoreapp3.1\WebLibrosAPI.MvcApplicationPartsAssemblyInfo.cache

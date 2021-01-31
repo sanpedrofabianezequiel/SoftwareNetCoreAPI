@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -12,6 +14,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using WebLibrosAPI.Contexto;
+using WebLibrosAPI.Entidades;
+using WebLibrosAPI.Models;
 
 namespace WebLibrosAPI
 {
@@ -25,10 +29,25 @@ namespace WebLibrosAPI
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
+        public void ConfigureServices(IServiceCollection services)// ACA SE AGREGAN LAS CONFIGURACIONES SERIA UNA INTERFAZ
         {
-            services.AddControllers();
+
+            //Con que vamos a autenticar y como JSONWEBTOCKEN => LIBREARIA(JWT)
+            services.AddResponseCaching();//Servicio de Cache Activado(CONFIGURACION)la logica va en la APLICACION
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer();
+            //requiere Microsofot.AspNetCore.Authentication.JwtBearer;
+            services.AddScoped<Helpers.FiltroAccionPersonalizado>();
+            services.AddControllers(options => { options.Filters.Add(new Helpers.FiltroExcepcion()); }); //No necesita una dependencia del CONFIGURE
+
             services.AddControllers() .AddNewtonsoftJson(x=> { x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore; });
+            services.AddControllers();
+
+            services.AddAutoMapper(configuration =>//Mappeo
+              {
+                  configuration.CreateMap<Autor, AutorDTO>();
+                  configuration.CreateMap<Autor, AutorCreacionDTO>();
+              },
+            typeof(Startup));
 
             //Inyectamos los servicios que vamos a UTILIZAR
             //SQL EJ:
@@ -39,7 +58,7 @@ namespace WebLibrosAPI
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)//ACA SE USAN, SERIA LA IMPLEMENTACION
         {
             if (env.IsDevelopment())
             {
@@ -47,6 +66,10 @@ namespace WebLibrosAPI
             }
 
             app.UseHttpsRedirection();
+            app.UseResponseCaching();//ACA LO VAMOS  BUSCAR (ESTO ES CONFIURACION)
+
+
+            app.UseAuthentication();//jwt
 
             app.UseRouting();
 

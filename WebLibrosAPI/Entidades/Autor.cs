@@ -13,10 +13,15 @@ namespace WebLibrosAPI.Entidades
         [Key]
         [Required]
         public int Id { get; set; }
-        [StringLength(100)]
+        [StringLength(100,ErrorMessage ="El nombre del Autor es muy largo",MinimumLength =2)]
         [Required]
         public string Nombre { get; set; }
+        public DateTime FechaNacimiento { get; set; }
         public List<Libro> Libros { get; set; }//Recuperamos todos los libros
+        [CreditCard]
+        public string TarjetaCredito { get; set; }
+        [Url]
+        public string Url { get; set; }
 
         //Servicio para evitar la Referencia Circular
     }
