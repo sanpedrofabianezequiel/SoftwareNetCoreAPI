@@ -32,6 +32,14 @@ namespace WebLibrosAPI
         public void ConfigureServices(IServiceCollection services)// ACA SE AGREGAN LAS CONFIGURACIONES SERIA UNA INTERFAZ
         {
 
+            services.AddCors(options =>
+                    options.AddPolicy("PermitirApiRequest",
+                    builder => builder.WithOrigins("http://www.apirequest.io").WithOrigins("GET","POST").AllowAnyHeader()
+                    ));
+
+
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+
             //Con que vamos a autenticar y como JSONWEBTOCKEN => LIBREARIA(JWT)
             services.AddResponseCaching();//Servicio de Cache Activado(CONFIGURACION)la logica va en la APLICACION
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer();
@@ -74,6 +82,15 @@ namespace WebLibrosAPI
             app.UseRouting();
 
             app.UseAuthorization();
+
+            //Menejo de CORS-----
+            //  app.UseCors(builder => builder.WithOrigins("http://www.apirequest.io"));
+            // app.UseCors(x => x.AllowAnyOrigin());
+            //app.UseCors(builder => builder.WithOrigins("http://www.apirequest.io").WithMethods("GET","POST").AllowAnyHeader());
+
+            //Se puede hacer de esta forma y SETIANDOSELO AL ATRIBUTO/CONTROLADOR
+            app.UseCors(); //Y EN EL configureService
+
 
             app.UseEndpoints(endpoints =>
             {

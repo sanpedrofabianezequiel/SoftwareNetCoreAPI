@@ -55,3 +55,46 @@ a nivel injection de dependencia
         }
 
 --Luego Add-Migration Para hacer los cambios y Update-Database
+
+-------------------------corssssssssssssss
+en el startup
+
+ConfigureService=>
+  services.AddCors(options =>
+                    options.AddPolicy("PermitirApiRequest",
+                    builder => builder.WithOrigins("http://www.apirequest.io").WithOrigins("GET","POST").AllowAnyHeader()
+                    ));
+
+ public void Configure(IApplicationBuilder app, IWebHostEnvironment env)//ACA SE USAN, SERIA LA IMPLEMENTACION
+        {
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+
+            app.UseHttpsRedirection();
+            app.UseResponseCaching();//ACA LO VAMOS  BUSCAR (ESTO ES CONFIURACION)
+
+
+            app.UseAuthentication();//jwt
+
+            app.UseRouting();
+
+            app.UseAuthorization();
+
+            //Menejo de CORS-----
+            //  app.UseCors(builder => builder.WithOrigins("http://www.apirequest.io"));
+            // app.UseCors(x => x.AllowAnyOrigin());
+            app.UseCors(builder => builder.WithOrigins("http://www.apirequest.io").WithMethods("GET","POST").AllowAnyHeader());
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
+        }
+
+
+
+
+en el Controlador
+using Microsoft.AspNetCore.Cors;
+[EnableCors("nombre de la politica")] => a nivel de controlador o Accion

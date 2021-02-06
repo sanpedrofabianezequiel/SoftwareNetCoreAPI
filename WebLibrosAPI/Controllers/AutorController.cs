@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using WebLibrosAPI.Contexto;
 using WebLibrosAPI.Entidades;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using AutoMapper;
 
 namespace WebLibrosAPI.Controllers
@@ -17,6 +18,7 @@ namespace WebLibrosAPI.Controllers
 
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("PermitirApiRequest")]
     public class AutorController : ControllerBase
     {
         private readonly ApplicationDbContext context;
@@ -55,11 +57,18 @@ namespace WebLibrosAPI.Controllers
         //     return context.Autores.Include(x => x.Libros).ToList(); //Ejemplo para ServiceFilter
         // }
      
+        [HttpGet]
+        public ActionResult<IEnumerable<Autor>> Get()
+        {
+            var resultado = context.Autores.Include(x => x.Libros).ToList();
+            return resultado;
+
+        }
 
         [HttpGet("primero")]
-        public ActionResult<Autor> GetPrimerAutor()
+        public async Task< ActionResult<Autor>> GetPrimerAutor()
         {
-            return context.Autores.Include(x => x.Libros).FirstOrDefault();
+            return await context.Autores.Include(x => x.Libros).FirstOrDefaultAsync();
         }
 
         //[HttpGet("{id}", Name = "ObtenerAutor")]//SINCRONICO------------
@@ -119,15 +128,15 @@ namespace WebLibrosAPI.Controllers
 
 
         //AutoMapper
-        [HttpGet] 
-        [ResponseCache(Duration = 15)]
-        [ServiceFilter(typeof(Helpers.FiltroAccionPersonalizado))]
-        public ActionResult<IEnumerable<Models.AutorDTO>> Get()
-        {
-            var autores= context.Autores.ToList();
-            var autoresDTO = mapper.Map<List<Models.AutorDTO>>(autores);
-            return autoresDTO;
-        }
+        //[HttpGet] 
+        //[ResponseCache(Duration = 15)]
+        //[ServiceFilter(typeof(Helpers.FiltroAccionPersonalizado))]
+        //public ActionResult<IEnumerable<Models.AutorDTO>> Get()
+        //{
+        //    var autores= context.Autores.ToList();
+        //    var autoresDTO = mapper.Map<List<Models.AutorDTO>>(autores);
+        //    return autoresDTO;
+        //}
         [HttpGet("{id}/{param2}", Name = "ObtenerAutor")]// ASINCRONICA-----------
         public async Task<ActionResult<Models.AutorDTO>> Get(int id, string param2)
         {
